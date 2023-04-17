@@ -1,3 +1,7 @@
+import * as Utils from '../core/utils/index'
+import {Settings} from '../core/constants/settings'
+
+
 export class DonateList{
 	#donateList
 	#donatesWrapper
@@ -11,7 +15,7 @@ export class DonateList{
 		this.#donateList.forEach((item)=>{
 			const donateItemHtml = document.createElement('div')
 			donateItemHtml.className = 'donate-item'
-			donateItemHtml.innerHTML = `${item['date']} - <b>${item['amount']}</b>`
+			donateItemHtml.innerHTML = `${Utils.getFormattedTime(item['date'])} - <b>${item['amount']}${Settings.currency}</b>`
 			this.#donatesWrapper.append(donateItemHtml)
 		})
 		
