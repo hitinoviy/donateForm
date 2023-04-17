@@ -1,3 +1,4 @@
+import {Settings} from '../core/constants/settings'
 export class DonateForm {
 	#totalAmount
 	#createNewDonate
@@ -9,7 +10,7 @@ export class DonateForm {
 	}
 	updateTotalAmount(newAmount){
 		const title = document.querySelector('#total-amount')
-		title.innerHTML = `${newAmount}$`
+		title.innerHTML = `${newAmount}${Settings.currency}`
 	}
 	#onCreateNewDonateSubmit(event){
 		event.preventDefault();
@@ -30,11 +31,11 @@ export class DonateForm {
 
 		const title = document.createElement('h1')
 		title.id = 'total-amount';
-		title.textContent = `${this.#totalAmount}$`
+		title.textContent = `${this.#totalAmount}${Settings.currency}`
 
 		const label = document.createElement('label')
 		label.className = 'donate-form__input-label'
-		label.textContent = 'Введите сумму в $'
+		label.textContent = `Введите сумму в ${Settings.currency}`
 
 		const input = document.createElement('input')
 		input.classList = 'donate-form__donate-input'
